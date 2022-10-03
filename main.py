@@ -1,3 +1,4 @@
+from itertools import count
 from tabnanny import check
 import pytermgui as ptg
 from pytermgui import tim
@@ -72,7 +73,10 @@ def get_all_devices(button=None):
     for l in status:
         if 'device' in l or 'sideload' in l:
             serial_numbers.append(l[:14])
-    return serial_numbers
+    if button:
+        status_text.value = f"{len(serial_numbers)} connected"
+    else:
+        return serial_numbers
  
 
 config = toml.load('config.toml')
