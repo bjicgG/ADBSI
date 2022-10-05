@@ -3,3 +3,7 @@ config.toml
 pdm.lock
 .pdm.toml
 textual.log
+build
+dist
+__pycache__/
+.venv

@@ -1,5 +1,3 @@
-from itertools import count
-from tabnanny import check
 import pytermgui as ptg
 from pytermgui import tim
 import sys
@@ -14,7 +12,6 @@ def kill_app(*args):
 
 def run(stage):
     status = None
-    devices = get_all_devices()
     # If there no devices attached stop.
     if len(get_all_devices()) == 0:
         return
@@ -68,7 +65,6 @@ def reboot_recovery(button):
 
 def get_all_devices(button=None):
     serial_numbers = []
-    #status = subprocess.call([config['adbLocation'],'devices'],stdout=subprocess.PIPE,universal_newlines=True,stderr=subprocess.STDOUT)
     status = check_output([config['adbLocation'],'devices']).decode('utf-8').split('\n')[1:]
     for l in status:
         if 'device' in l or 'sideload' in l:
